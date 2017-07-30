@@ -36,7 +36,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('home') }}">
                         Winwin Referral<br /><small>...you can gain (win) either way</small>
                     </a>
                 </div>
@@ -45,7 +45,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Projects</a></li>
+                        <li><a href="{{ url('post') }}">Post</a></li>
                         <li><a href="#">Services</a></li>
                         <li><a href="#">Downloads</a></li>
                         <li><a href="#">About</a></li>

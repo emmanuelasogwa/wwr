@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Submit a referral scheme</div>
+                <div class="panel-heading"><h2>Share a referral scheme</h2></div>
                 <div class="panel-body">
                   <form class="form">
                    <div class="form-group">
@@ -15,7 +15,7 @@
                    </div>
                    <div class="form-group">
                     <label>Referral Link/URL</label>
-                    <input type="url" class="form-control" id="inputReferralLink" placeholder="Referral link">w
+                    <input type="url" class="form-control" id="inputReferralLink" placeholder="Referral link">
                    </div>
                    <div class="form-group">
                     <label for="comment">Description</label>
@@ -29,6 +29,10 @@
                     <label>Invitee's reward</label>
                     <input type="text" class="form-control" id="inviteeReward" placeholder="Invitee's reward">
                     </div>
+                    <div class="form-group">
+                     <label>Expiration Date</label>
+                     <input type="date" class="form-control" id="expirationDate" placeholder="Expiration Date">
+                     </div>
                     <div class="form-group">
                      <label class="btn btn-default" for="my-file-selector">
                         <input id="my-file-selector" type="file" style="display:none;">
