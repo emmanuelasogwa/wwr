@@ -9,10 +9,8 @@ use Illuminate\Support\Facades\Input;
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Submit a referral scheme</div>
+                <div class="panel-heading"><h2>Share a referral scheme</h2></div>
                 <div class="panel-body">
-
-
 
                 {{ Form::open(array('route' => 'schemes.store', 'files'=>'true')) }}
                 {!! csrf_field() !!}
@@ -55,10 +53,9 @@ use Illuminate\Support\Facades\Input;
                  </div>
 
                  <div class="form-group">
-                  {{ Form::label('image', "Select Image:", ['class' => 'control-label ']) }}
-                  {{ Form::file('image') }}
+                  {{ Form::label('image', "Select Image:", ['class' => 'btn btn-default']) }}
+                  {{ Form::file('image', ['style' => 'display:none']) }}
                   </div>
-
 
                  <div class="form-group">
                   <div class="col-md-8">
