@@ -18,6 +18,11 @@
 | loading any of our classes later on. It feels nice to relax.
 |
 */
+/*
+laravel changes 
+Here I want ot list the changes that have been recorded in the recent past
+This has to be removed after some time
+*/
 
 require __DIR__.'/../bootstrap/autoload.php';
 
