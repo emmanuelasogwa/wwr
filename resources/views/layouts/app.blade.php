@@ -45,11 +45,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
-                        <li><a href="{{ url('post') }}">Post</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Downloads</a></li>
+                        <li><a href="{{ url('schemes/create') }}">Post</a></li>
+                        <li><a href="{{ url('schemes') }}">Schemes</a></li>
+                        <li><a href="#">Referer's Lounge</a></li>
                         <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

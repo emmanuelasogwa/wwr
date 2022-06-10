@@ -8,7 +8,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h2>Share a referral scheme</h2></div>
                 <div class="panel-body">
-                  <form class="form">
+                  <form class="form" enctype="multipart/form-data">
                    <div class="form-group">
                     <label>Title</label>
                     <input type="text" class="form-control" id="inputTitle" placeholder="Title">

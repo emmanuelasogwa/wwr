@@ -34,7 +34,9 @@ class SchemesController extends Controller
      */
     public function create()
     {
-       return view('schemes.create');
+        $data = [];
+        $data['modify'] = 0;
+        return view('schemes/create', $data);
     }
 
     /**
@@ -47,13 +49,15 @@ class SchemesController extends Controller
     {
         // input validation
         $rules = array(
-            'title'       => 'required',
+            'title'       => 'required|min:12',
             'link'      => 'required',
-            'creator' => 'required'
+            'creator' => 'required|min:6 ',
+            'image'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         );
         $validator = Validator::make(Input::all(), $rules);
 
-        // process the login
+        // process the form
+        // process the form
         if ($validator->fails()) {
             return Redirect::to('schemes/create')
                 ->withErrors($validator)
@@ -66,11 +70,25 @@ class SchemesController extends Controller
         $scheme->creator   = Input::get('creator');
         $scheme->referer_reward = Input::get('referer_reward');
         $scheme->invitee_reward = Input::get('invitee_reward');
+
+            //Process uploaded image
+            if($request->hasFile('image'))
+            {
+                $image_file = $request->file('image');
+                $image_file_name =  time().'.'.$image_file->getClientOriginalExtension();
+                $destinationPath = public_path('/images');
+                $image_file->move($destinationPath, $image_file_name);
+
+            }
+        $scheme->image_link = $destinationPath.'/'.$image_file_name;
         $scheme->save();
 
+
+
+
         // redirect
-        Session::flash('message', 'Successfully created scheme!');
-        return Redirect::to('schemes/create');
+        $message ='You have successfully posted a referral scheme!';
+        return Redirect::to('schemes/create')->with('message',$message);
     }
     }
 
@@ -97,6 +115,18 @@ class SchemesController extends Controller
     public function edit($id)
     {
         //
+
+        $data = [];
+        $data['modify'] = 1;
+        $data['id'] = $id;
+        $scheme = Scheme::findOrFail($id);
+        $data['title'] = $scheme->title;
+        $data['link']= $scheme->link;
+        $data['description'] = $scheme->description;
+        $data['creator'] = $scheme->creator;
+        $data['referer_reward'] = $scheme->referer_reward;
+        $data['invitee_reward'] = $scheme->invitee_reward;
+        return view('schemes.create', $data);
     }
 
     /**
@@ -107,8 +137,50 @@ class SchemesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   $data = [];
+        $data['modify'] = 1;
+        $data['id'] = $id;
+        // input validation
+        $rules = array(
+            'title'       => 'required|min:12',
+            'link'      => 'required',
+            'creator' => 'required|min:6'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the form
+        if ($validator->fails()) {
+            return Redirect::to('schemes/create',$data)
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $scheme = Scheme::find($id);
+            $scheme->title       = Input::get('title');
+            $scheme->link      = Input::get('link');
+            $scheme->description = Input::get('description');
+            $scheme->creator   = Input::get('creator');
+            $scheme->referer_reward = Input::get('referer_reward');
+            $scheme->invitee_reward = Input::get('invitee_reward');
+
+            //Process uploaded image
+            if($request->hasFile('image'))
+            {
+                $image_file = $request->file('image');
+                $image_file_name =  time().'.'.$image_file->getClientOriginalExtension();
+                $destinationPath = public_path('/images');
+                $image_file->move($destinationPath, $image_file_name);
+
+            }
+//            $scheme->image_link = $destinationPath.'/'.$image_file_name;
+            $scheme->save();
+
+
+
+
+            // redirect
+            $data['message'] ='You have successfully updated the referral scheme!';
+            return view('schemes.show')->withScheme($scheme);
+        }
     }
 
     /**

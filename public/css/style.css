@@ -6,23 +6,41 @@ body {
    font-size: 16px;
    line-height: 2;
    /* Margin bottom by footer height */
-   margin-bottom: 60px;
+   margin-bottom: 3.75rem;
 }
 .navbar-brand {
-  font-size:20px; 
-  line-height:12px;
-  padding-top:15px;
+  font-size:1.25rem;
+  line-height:0.75rem;
+  padding-top:0.9375rem;
   padding-bottom:5px;
 }
 .navbar-brand small {
   display:block;
-  font-size:12px;
+  font-size:0.75rem;
+}
+/*#wrapper {*/
+    /*float: left;*/
+/*}*/
+#image-div {
+    float:left;
+    width: 30%;
+}
+#title {
+    width: 70%;
+}
+#image-div .container {
+    width: 150px;
+    height: 150px;
+}
+#image-div .container img {
+    width: 100%;
+    height: inherit;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 50px;
+  height: 3.125rem;
   background-color: #f5f5f5;
 }
